@@ -31,8 +31,10 @@
 
 
 **Tacna – Perú**
+
 **2025**
 
+![Logo1](media/logo1.png) ![Logo2](media/logo2.png)
 
 |CONTROL DE VERSIONES||||||
 | :-: | :- | :- | :- | :- | :- |
@@ -60,6 +62,7 @@
       - 4.2.3 [Costos del ambiente](#423-costos-del-ambiente)  
       - 4.2.4 [Costos de personal](#424-costos-de-personal)  
       - 4.2.5 [Costos totales del desarrollo del sistema](#425-costos-totales-del-desarrollo-del-sistema)
+
    4.3 [Factibilidad Operativa](#43-factibilidad-operativa) 
    4.4 [Factibilidad Legal](#44-factibilidad-legal) 
    4.5 [Factibilidad Social](#45-factibilidad-social)  

@@ -41,38 +41,38 @@
 |***Versión***|***Hecha por***|***Revisada por***|***Aprobada por***|***Fecha***|***Motivo***|
 |1\.0|AHAO, CDAR, WESJ, BEAS|PCQ|-|24/04/2025|Versión 1.0|
 
+
 ## Índice General
 
-1. [Descripción del Proyecto](#1-descripción-del-proyecto)  
-   1.1 [Nombre del proyecto](#11-nombre-del-proyecto)  
-   1.2 [Duración del proyecto](#12-duración-del-proyecto)  
-   1.3 [Descripción](#13-descripción)  
-   1.4 [Objetivos](#14-objetivos)  
-    - 1.4.1 [Objetivo general](#141-objetivo-general)  
+1. [Descripción del Proyecto](#1-descripción-del-proyecto)
+   1.1 [Nombre del proyecto](#11-nombre-del-proyecto)
+   1.2 [Duración del proyecto](#12-duración-del-proyecto)
+   1.3 [Descripción](#13-descripción)
+   1.4 [Objetivos](#14-objetivos)
+    - 1.4.1 [Objetivo general](#141-objetivo-general)
     - 1.4.2 [Objetivos Específicos](#142-objetivos-específicos)
-2. [Riesgos](#2-riesgos)  
-3. [Análisis de la Situación actual](#3-análisis-de-la-situación-actual)  
-   3.1 [Planteamiento del problema](#31-planteamiento-del-problema)  
+2. [Riesgos](#2-riesgos)
+3. [Análisis de la Situación actual](#3-análisis-de-la-situación-actual)
+   3.1 [Planteamiento del problema](#31-planteamiento-del-problema)
    3.2 [Consideraciones de hardware y software](#32-consideraciones-de-hardware-y-software)
-4. [Estudio de Factibilidad](#4-estudio-de-factibilidad)  
-   4.1 [Factibilidad Técnica](#41-factibilidad-técnica)  
-   4.2 [Factibilidad Económica](#42-factibilidad-económica)  
-      - 4.2.1 [Costos Generales](#421-costos-generales)  
-      - 4.2.2 [Costos operativos durante el desarrollo](#422-costos-operativos-durante-el-desarrollo)  
-      - 4.2.3 [Costos del ambiente](#423-costos-del-ambiente)  
-      - 4.2.4 [Costos de personal](#424-costos-de-personal)  
+4. [Estudio de Factibilidad](#4-estudio-de-factibilidad)
+   4.1 [Factibilidad Técnica](#41-factibilidad-técnica)
+   4.2 [Factibilidad Económica](#42-factibilidad-económica)
+      - 4.2.1 [Costos Generales](#421-costos-generales)
+      - 4.2.2 [Costos operativos durante el desarrollo](#422-costos-operativos-durante-el-desarrollo)
+      - 4.2.3 [Costos del ambiente](#423-costos-del-ambiente)
+      - 4.2.4 [Costos de personal](#424-costos-de-personal)
       - 4.2.5 [Costos totales del desarrollo del sistema](#425-costos-totales-del-desarrollo-del-sistema)
 
-   4.3 [Factibilidad Operativa](#43-factibilidad-operativa) 
-   4.4 [Factibilidad Legal](#44-factibilidad-legal) 
-   4.5 [Factibilidad Social](#45-factibilidad-social)  
-   4.6 [Factibilidad Ambiental](#46-factibilidad-ambiental)   
+   4.3 [Factibilidad Operativa](#43-factibilidad-operativa)
+   4.4 [Factibilidad Legal](#44-factibilidad-legal)
+   4.5 [Factibilidad Social](#45-factibilidad-social)
+   4.6 [Factibilidad Ambiental](#46-factibilidad-ambiental)
 5. [Análisis Financiero](#5-análisis-financiero)  
    5.1 [Justificacion de la Inversión](#51-justificación-de-la-inversión)
       - 5.1.1 [Beneficios del Proyecto](#511-beneficios-del-proyecto)
       - 5.1.2 [Criterios de Inversion](#512-criterios-de-inversión)
 6. [Conclusiones](#6-conclusiones)  
-
 
 
 # 1. Descripción del Proyecto

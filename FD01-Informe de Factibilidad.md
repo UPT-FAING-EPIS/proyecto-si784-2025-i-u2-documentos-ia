@@ -4,6 +4,8 @@
 
 **Escuela Profesional de Ingeniería de Sistemas**
 
+![Logo](media/logo-upt.png)
+
 **Proyecto** 
 
 **“*Generador de documentación impulsado por IA (GDI-IA)”***
@@ -22,10 +24,10 @@
 
 **Integrantes:**
 
-*Akhtar Oviedo, Ahmed Hasan (2022074261)*
-*Ayala Ramos, Carlos Daniel (2022074266)*
-*Salas Jiménez, Walter Emmanuel (2022073896)*
-*Ancco Suaña, Bruno Enrique (2023077472)*
+- *Akhtar Oviedo, Ahmed Hasan (2022074261)*
+- *Ayala Ramos, Carlos Daniel (2022074266)*
+- *Salas Jiménez, Walter Emmanuel (2022073896)*
+- *Ancco Suaña, Bruno Enrique (2023077472)*
 
 
 **Tacna – Perú**

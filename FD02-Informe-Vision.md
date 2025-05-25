@@ -39,4 +39,4 @@
 |CONTROL DE VERSIONES||||||
 | :-: | :- | :- | :- | :- | :- |
 |***Versión***|***Hecha por***|***Revisada por***|***Aprobada por***|***Fecha***|***Motivo***|
-|1\.0|AHAO, CDAR, WESJ, BEAS|PCQ|-|24/04/2025|Versión 1.0|
+|1\.0|AHAO, CDAR, WESJ, BEAS|PCQ|-|25/04/2025|Versión 1.0|

@@ -1,4 +1,4 @@
-// Funcionalidad de drag and drop
+// Variables globales
 const uploadZone = document.getElementById('uploadZone');
 const fileInput = document.getElementById('fileInput');
 const uploadedFiles = document.getElementById('uploadedFiles');
@@ -7,9 +7,7 @@ const generateBtn = document.getElementById('generateBtn');
 const loadingSpinner = document.getElementById('loadingSpinner');
 const resultados = document.getElementById('resultados');
 
-// Variables para almacenar archivos y proyecto
-let filesArray = [];
-let currentProject = null;
+let uploadedFile = null;
 
 // Eventos de drag and drop
 uploadZone.addEventListener('dragover', (e) => {
@@ -25,243 +23,227 @@ uploadZone.addEventListener('drop', (e) => {
     e.preventDefault();
     uploadZone.classList.remove('dragover');
     const files = e.dataTransfer.files;
-    handleFiles(files);
+    if (files.length > 0) {
+        handleFile(files[0]); // Solo tomar el primer archivo
+    }
 });
 
 fileInput.addEventListener('change', (e) => {
-    handleFiles(e.target.files);
+    if (e.target.files.length > 0) {
+        handleFile(e.target.files[0]);
+    }
 });
 
-function handleFiles(files) {
-    if (files.length > 0) {
-        filesArray = Array.from(files);
-        filesList.innerHTML = '';
-        filesArray.forEach(file => {
-            const fileDiv = document.createElement('div');
-            fileDiv.className = 'file-info';
-            fileDiv.innerHTML = `
+function handleFile(file) {
+    // Verificar que sea un archivo de código
+    const extension = file.name.split('.').pop().toLowerCase();
+    const extensionesSoportadas = ['js', 'jsx', 'ts', 'tsx', 'py', 'java', 'cpp', 'c', 'cs', 'php', 'rb', 'go', 'rs', 'html', 'css', 'scss', 'vue', 'kt', 'swift', 'dart', 'sql'];
+    
+    if (!extensionesSoportadas.includes(extension)) {
+        alert('Tipo de archivo no soportado. Por favor sube un archivo de código válido.');
+        return;
+    }
+    
+    // Leer el contenido del archivo
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        uploadedFile = {
+            name: file.name,
+            content: e.target.result,
+            extension: extension
+        };
+        
+        // Mostrar información del archivo
+        filesList.innerHTML = `
+            <div class="file-info">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <i class="fas fa-file-code me-2"></i>
+                        <i class="fas fa-file-code me-2 text-primary"></i>
                         <strong>${file.name}</strong>
                         <small class="text-muted ms-2">(${(file.size / 1024).toFixed(1)} KB)</small>
+                        <span class="badge bg-success ms-2">${extension.toUpperCase()}</span>
                     </div>
                     <i class="fas fa-check-circle text-success"></i>
                 </div>
-            `;
-            filesList.appendChild(fileDiv);
-        });
+            </div>
+        `;
+        
         uploadedFiles.style.display = 'block';
-    }
+    };
+    
+    reader.readAsText(file);
 }
 
-// Crear proyecto y subir archivos
-async function crearProyecto() {
+// Analizar archivo con IA
+generateBtn.addEventListener('click', async () => {
+    if (!uploadedFile) {
+        alert('Por favor, sube un archivo primero');
+        return;
+    }
+    
+    // Ocultar sección de archivos y mostrar loading
+    uploadedFiles.style.display = 'none';
+    loadingSpinner.style.display = 'block';
+    
     try {
-        // Determinar el lenguaje principal basado en las extensiones de archivo
-        const extensiones = filesArray.map(file => file.name.split('.').pop().toLowerCase());
-        const lenguajesPrincipales = {
-            js: 'JavaScript',
-            py: 'Python',
-            java: 'Java',
-            cpp: 'C++',
-            c: 'C',
-            html: 'HTML',
-            css: 'CSS',
-            php: 'PHP',
-            rb: 'Ruby',
-            go: 'Go',
-            ts: 'TypeScript',
-            jsx: 'React',
-            tsx: 'React TypeScript'
-        };
+        console.log('🔍 Enviando archivo a la IA para análisis...');
         
-        // Contar ocurrencias de cada extensión
-        const conteoExtensiones = {};
-        extensiones.forEach(ext => {
-            conteoExtensiones[ext] = (conteoExtensiones[ext] || 0) + 1;
-        });
-        
-        // Encontrar la extensión más común
-        let extensionMasComun = '';
-        let maxConteo = 0;
-        
-        for (const ext in conteoExtensiones) {
-            if (conteoExtensiones[ext] > maxConteo) {
-                maxConteo = conteoExtensiones[ext];
-                extensionMasComun = ext;
-            }
-        }
-        
-        const lenguajePrincipal = lenguajesPrincipales[extensionMasComun] || 'Otro';
-        
-        // Crear proyecto en la base de datos
-        const response = await fetch('/api/proyectos', {
+        const response = await fetch('/api/proyectos/analizar-codigo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                nombre_proyecto: `Proyecto ${new Date().toLocaleDateString()}`,
-                descripcion: `Proyecto con ${filesArray.length} archivos`,
-                lenguaje_programacion: lenguajePrincipal
+                codigo: uploadedFile.content,
+                nombreArchivo: uploadedFile.name,
+                lenguajeProgramacion: uploadedFile.extension
             })
         });
-        
-        if (!response.ok) {
-            throw new Error('Error al crear el proyecto');
-        }
         
         const data = await response.json();
-        currentProject = data.proyecto;
         
-        // Actualizar estado a 'subiendo'
-        await fetch(`/api/proyectos/${currentProject.id}/estado`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                estado: 'subiendo'
-            })
-        });
+        if (!response.ok) {
+            throw new Error(data.error || 'Error al analizar el código');
+        }
         
-        // Aquí iría la lógica para subir los archivos a un almacenamiento
-        // Por ahora, simularemos que se han subido correctamente
+        console.log('✅ Análisis completado');
         
-        // Actualizar estado a 'procesando'
-        await fetch(`/api/proyectos/${currentProject.id}/estado`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                estado: 'procesando'
-            })
-        });
+        // Mostrar resultados
+        mostrarAnalisis(data);
         
-        return currentProject;
     } catch (error) {
-        console.error('Error al crear proyecto:', error);
-        throw error;
-    }
-}
-
-// Generar documentación
-generateBtn.addEventListener('click', async () => {
-    if (filesArray.length === 0) {
-        alert('Por favor, sube al menos un archivo');
-        return;
-    }
-    
-    uploadedFiles.style.display = 'none';
-    loadingSpinner.style.display = 'block';
-    
-    try {
-        // Crear proyecto y subir archivos
-        const proyecto = await crearProyecto();
+        console.error('❌ Error:', error);
+        alert(`Error: ${error.message}`);
         
-        // Simular procesamiento
-        setTimeout(async () => {
-            try {
-                // Actualizar estado a 'completado'
-                await fetch(`/api/proyectos/${proyecto.id}/estado`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        estado: 'completado'
-                    })
-                });
-                
-                loadingSpinner.style.display = 'none';
-                resultados.style.display = 'block';
-                
-                // Scroll suave a resultados
-                resultados.scrollIntoView({ behavior: 'smooth' });
-                
-                // Animar las secciones de resultados
-                const resultSections = document.querySelectorAll('.result-section');
-                resultSections.forEach((section, index) => {
-                    setTimeout(() => {
-                        section.style.opacity = '0';
-                        section.style.transform = 'translateY(20px)';
-                        section.style.transition = 'all 0.5s ease';
-                        
-                        setTimeout(() => {
-                            section.style.opacity = '1';
-                            section.style.transform = 'translateY(0)';
-                        }, 100);
-                    }, index * 200);
-                });
-            } catch (error) {
-                console.error('Error al actualizar estado:', error);
-                alert('Error al procesar el proyecto');
-                loadingSpinner.style.display = 'none';
-            }
-        }, 3000);
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error al crear el proyecto');
+        // Volver a mostrar la sección de archivos
         loadingSpinner.style.display = 'none';
         uploadedFiles.style.display = 'block';
     }
 });
 
-// Smooth scrolling para navegación
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Actualizar pasos del progreso
-function updateProgressSteps(activeStep) {
-    const steps = document.querySelectorAll('.progress-step');
-    steps.forEach((step, index) => {
-        if (index < activeStep) {
-            step.classList.add('active');
-        } else {
-            step.classList.remove('active');
-        }
-    });
+// Mostrar el análisis de la IA
+function mostrarAnalisis(data) {
+    loadingSpinner.style.display = 'none';
+    
+    // Actualizar la sección de resultados
+    resultados.innerHTML = `
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Análisis del Código</h2>
+            
+            <div class="result-section">
+                <h4 class="fw-bold mb-3">
+                    <i class="fas fa-robot text-primary me-2"></i>
+                    Resumen del Archivo: ${data.archivo}
+                </h4>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">Información del Archivo:</h6>
+                        <ul class="list-unstyled">
+                            <li><strong>Archivo:</strong> ${data.archivo}</li>
+                            <li><strong>Lenguaje:</strong> <span class="badge bg-primary">${data.lenguaje_detectado}</span></li>
+                            <li><strong>Líneas totales:</strong> ${data.estadisticas.total_lineas}</li>
+                            <li><strong>Líneas de código:</strong> ${data.estadisticas.lineas_codigo}</li>
+                            <li><strong>Comentarios:</strong> ${data.estadisticas.lineas_comentarios}</li>
+                            <li><strong>Caracteres:</strong> ${data.estadisticas.caracteres}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">Procesado con:</h6>
+                        <p><i class="fas fa-brain text-success me-2"></i>Gemini AI (API Key ${data.api_key_usada})</p>
+                        
+                        <button class="btn btn-success btn-sm me-2" onclick="descargarAnalisis()">
+                            <i class="fas fa-download me-1"></i>Descargar Análisis
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="analizarOtroArchivo()">
+                            <i class="fas fa-upload me-1"></i>Analizar Otro
+                        </button>
+                    </div>
+                </div>
+                
+                <h5 class="fw-bold mb-3">Análisis Detallado:</h5>
+                <div class="analisis-contenido p-3 bg-light border rounded">
+                    <pre style="white-space: pre-wrap; font-family: 'Segoe UI', sans-serif; margin: 0;">${data.analisis}</pre>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    resultados.style.display = 'block';
+    resultados.scrollIntoView({ behavior: 'smooth' });
+    
+    // Guardar datos para descarga
+    window.currentAnalysis = data;
 }
 
-// Simular progreso cuando se suben archivos
-fileInput.addEventListener('change', () => {
-    updateProgressSteps(2);
-});
+// Función para descargar el análisis
+function descargarAnalisis() {
+    if (!window.currentAnalysis) {
+        alert('No hay análisis disponible para descargar');
+        return;
+    }
+    
+    const data = window.currentAnalysis;
+    const contenido = `ANÁLISIS DE CÓDIGO - ${data.archivo}
+===============================================
 
-generateBtn.addEventListener('click', () => {
-    updateProgressSteps(3);
-});
+INFORMACIÓN DEL ARCHIVO:
+- Nombre: ${data.archivo}
+- Lenguaje: ${data.lenguaje_detectado}
+- Líneas totales: ${data.estadisticas.total_lineas}
+- Líneas de código: ${data.estadisticas.lineas_codigo}
+- Comentarios: ${data.estadisticas.lineas_comentarios}
+- Caracteres: ${data.estadisticas.caracteres}
 
-// Verificar si el usuario está autenticado
+ANÁLISIS DETALLADO:
+${data.analisis}
+
+===============================================
+Generado con Gemini AI el ${new Date().toLocaleString()}
+`;
+    
+    const blob = new Blob([contenido], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `analisis-${data.archivo.replace(/[^a-z0-9]/gi, '_')}-${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// Función para analizar otro archivo
+function analizarOtroArchivo() {
+    // Limpiar variables
+    uploadedFile = null;
+    window.currentAnalysis = null;
+    
+    // Ocultar resultados
+    resultados.style.display = 'none';
+    
+    // Limpiar y mostrar zona de subida
+    filesList.innerHTML = '';
+    uploadedFiles.style.display = 'none';
+    fileInput.value = '';
+    
+    // Scroll a la zona de subida
+    uploadZone.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Verificar autenticación al cargar
 async function checkAuth() {
     try {
         const response = await fetch('/api/auth/user');
         
         if (!response.ok) {
-            // Si no está autenticado, redirigir a la página de login
             window.location.href = '/login';
             return;
         }
         
         const data = await response.json();
-        
-        // Mostrar información del usuario en la UI si es necesario
-        if (data.user) {
-            // Puedes añadir código aquí para mostrar el nombre del usuario en la UI
-            console.log('Usuario autenticado:', data.user);
-        }
+        console.log('Usuario autenticado:', data.user.email);
     } catch (error) {
         console.error('Error al verificar autenticación:', error);
         window.location.href = '/login';
@@ -288,7 +270,7 @@ function setupLogout() {
     }
 }
 
-// Ejecutar al cargar la página
+// Inicializar cuando se carga la página
 document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
     setupLogout();

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { proyectosService, documentosService } = require('../services/db');
+const geminiService = require('../services/gemini');
 
 // Middleware para verificar autenticación
 const requireAuth = (req, res, next) => {
@@ -11,96 +11,54 @@ const requireAuth = (req, res, next) => {
   }
 };
 
-// Obtener todos los proyectos del usuario
-router.get('/', requireAuth, async (req, res) => {
+// Ruta principal: Analizar código con IA
+router.post('/analizar-codigo', requireAuth, async (req, res) => {
   try {
-    const proyectos = await proyectosService.obtenerProyectosPorUsuario(req.session.user.id);
-    res.status(200).json({ proyectos });
-  } catch (error) {
-    console.error('Error al obtener proyectos:', error.message);
-    res.status(500).json({ error: 'Error al obtener proyectos' });
-  }
-});
-
-// Crear un nuevo proyecto
-router.post('/', requireAuth, async (req, res) => {
-  try {
-    const { nombre_proyecto, descripcion, lenguaje_programacion } = req.body;
+    const { codigo, nombreArchivo, lenguajeProgramacion } = req.body;
     
-    if (!nombre_proyecto) {
-      return res.status(400).json({ error: 'El nombre del proyecto es requerido' });
+    // Validar datos de entrada
+    if (!codigo || !nombreArchivo) {
+      return res.status(400).json({ 
+        error: 'El código y el nombre del archivo son requeridos' 
+      });
     }
     
-    const nuevoProyecto = {
-      usuario_id: req.session.user.id,
-      nombre_proyecto,
-      descripcion,
-      lenguaje_programacion,
-      estado_procesamiento: 'pendiente'
-    };
+    console.log(`🔍 Usuario ${req.session.user.email} analizando: ${nombreArchivo}`);
+    console.log(`📝 Longitud del código: ${codigo.length} caracteres`);
     
-    const proyecto = await proyectosService.crearProyecto(nuevoProyecto);
-    res.status(201).json({ proyecto });
-  } catch (error) {
-    console.error('Error al crear proyecto:', error.message);
-    res.status(500).json({ error: 'Error al crear proyecto' });
-  }
-});
-
-// Obtener un proyecto específico
-router.get('/:id', requireAuth, async (req, res) => {
-  try {
-    const proyecto = await proyectosService.obtenerProyectoPorId(req.params.id);
+    // Analizar código con Gemini
+    const resultado = await geminiService.analizarCodigo(
+      codigo, 
+      nombreArchivo, 
+      lenguajeProgramacion || 'auto'
+    );
     
-    // Verificar que el proyecto pertenezca al usuario
-    if (proyecto.usuario_id !== req.session.user.id) {
-      return res.status(403).json({ error: 'No tienes permiso para acceder a este proyecto' });
+    if (!resultado.success) {
+      console.error('❌ Error en análisis de Gemini:', resultado.error);
+      return res.status(500).json({ 
+        error: 'Error al analizar el código con IA',
+        detalle: resultado.error 
+      });
     }
     
-    res.status(200).json({ proyecto });
+    console.log('✅ Análisis completado exitosamente');
+    
+    // Responder con el análisis
+    res.status(200).json({
+      success: true,
+      analisis: resultado.analisis,
+      lenguaje_detectado: resultado.lenguaje_detectado,
+      estadisticas: resultado.estadisticas,
+      archivo: nombreArchivo,
+      api_key_usada: resultado.api_key_usada
+    });
+    
   } catch (error) {
-    console.error('Error al obtener proyecto:', error.message);
-    res.status(500).json({ error: 'Error al obtener proyecto' });
-  }
-});
-
-// Actualizar estado de procesamiento de un proyecto
-router.patch('/:id/estado', requireAuth, async (req, res) => {
-  try {
-    const { estado } = req.body;
-    
-    if (!estado) {
-      return res.status(400).json({ error: 'El estado es requerido' });
-    }
-    
-    // Verificar que el proyecto pertenezca al usuario
-    const proyecto = await proyectosService.obtenerProyectoPorId(req.params.id);
-    if (proyecto.usuario_id !== req.session.user.id) {
-      return res.status(403).json({ error: 'No tienes permiso para modificar este proyecto' });
-    }
-    
-    await proyectosService.actualizarEstadoProcesamiento(req.params.id, estado);
-    res.status(200).json({ message: 'Estado actualizado correctamente' });
-  } catch (error) {
-    console.error('Error al actualizar estado:', error.message);
-    res.status(500).json({ error: 'Error al actualizar estado' });
-  }
-});
-
-// Obtener documentos de un proyecto
-router.get('/:id/documentos', requireAuth, async (req, res) => {
-  try {
-    // Verificar que el proyecto pertenezca al usuario
-    const proyecto = await proyectosService.obtenerProyectoPorId(req.params.id);
-    if (proyecto.usuario_id !== req.session.user.id) {
-      return res.status(403).json({ error: 'No tienes permiso para acceder a este proyecto' });
-    }
-    
-    const documentos = await documentosService.obtenerDocumentosPorProyecto(req.params.id);
-    res.status(200).json({ documentos });
-  } catch (error) {
-    console.error('Error al obtener documentos:', error.message);
-    res.status(500).json({ error: 'Error al obtener documentos' });
+    console.error('❌ Error general en análisis de código:', error);
+    res.status(500).json({ 
+      error: 'Error interno del servidor al analizar código',
+      detalle: error.message 
+    });
   }
 });
 

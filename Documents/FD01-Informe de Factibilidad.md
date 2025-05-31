@@ -318,3 +318,22 @@
 
    |TIR=|S/.1.53|
    | :- | -: |
+
+   # 6. Conclusiones
+   Luego de desarrollar el presente estudio de factibilidad para el proyecto GDI-IA, puedo concluir que su implementación dentro de la empresa DevStar Solutions representa una solución técnica, económica, operativa, legal, social y ambientalmente viable. El análisis detallado de cada aspecto evaluado me ha permitido tener una visión clara de los beneficios que traerá este sistema para la organización.
+
+   En primer lugar, desde el punto de vista técnico, se cuenta con la infraestructura y los recursos tecnológicos necesarios para llevar a cabo el desarrollo e implementación del sistema sin necesidad de una inversión excesiva en nuevos equipos o plataformas. El software será desarrollado con tecnologías modernas y compatibles con el entorno actual de la empresa.
+
+   En cuanto a la factibilidad económica, he comprobado que la inversión inicial requerida es razonable en comparación con los ahorros mensuales que el sistema generará, gracias a la automatización de tareas repetitivas y la mejora en la productividad del personal. Se estima una recuperación de la inversión en un período de tiempo aceptable, lo cual refuerza la viabilidad financiera del proyecto.
+
+   La factibilidad operativa también es positiva, ya que el sistema ha sido pensado para integrarse de forma natural al flujo de trabajo de los usuarios, facilitando la generación de documentos mediante un entorno intuitivo y con el respaldo de inteligencia artificial. Además, el personal está dispuesto a capacitarse y utilizar esta herramienta para mejorar sus labores diarias.
+
+   Legalmente, no se identifican conflictos con normativas locales ni internacionales, y el proyecto respeta la privacidad y protección de datos, cumpliendo con los principios básicos del manejo responsable de la información.
+
+   Desde un enfoque social, el proyecto contribuirá al desarrollo de competencias digitales dentro de la empresa, promoviendo la innovación tecnológica y generando un impacto positivo en la cultura organizacional.
+
+   Finalmente, el impacto ambiental del sistema es mínimo, al promover la digitalización de documentos y reducir el consumo de papel, tinta y otros recursos físicos.
+
+   Por todo lo anterior, concluyo que el sistema GDI-IA no solo es factible, sino también una herramienta estratégica para optimizar los procesos internos de DevStar Solutions y avanzar hacia una gestión más eficiente e innovadora.
+
+

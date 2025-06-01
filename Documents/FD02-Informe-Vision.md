@@ -78,3 +78,33 @@
 10. [Conclusiones](#10-conclusiones)
 11. [Recomendaciones](#11-recomendaciones)
 12. [Webgrafía](#12-webgrafía)
+
+
+   # 1. Introducción
+   ## a. **Propósito**
+   El propósito de este proyecto es diseñar e implementar una plataforma web capaz de ayudar a completar documentos estructurados de manera automática, utilizando diversas IAs especializadas en redacción, análisis de contenido y generación de referencias. La solución permitirá a los usuarios a terminar los documentos en poco tiempo siguiendo formatos predefinidos, reduciendo el esfuerzo manual y asegurando la coherencia y calidad del contenido.
+
+   ## b. **Alcance**
+   El sistema abarca:
+   - Ayuda de manera automatizada en los documentos para formatos estandarizados (FD01-FD06).
+   - Un módulo de captura de datos donde el usuario ingresará información clave.
+   - La integración de varias IAs para procesar y generar contenido por secciones.
+   - La generación de documentos en formatos PDF y DOCX.
+   - Almacenamiento y gestión de documentos generados. No incluye la edición manual posterior al documento generado dentro de la plataforma.
+
+   ## c. **Definiciones, Siglas y Abreviaturas**
+   - IA: Inteligencia Artificial.
+   - MCP: Multi-Component Platform (Plataforma de Múltiples Componentes).
+   - FD01-FD06: Formatos documentales estandarizados para proyectos de software.
+   - API: Application Programming Interface.
+   - PDF/DOCX: Formatos de salida de documentos.
+
+   ## d. **Referencias**
+   - Manuales institucionales de formatos documentales.
+   - Documentación oficial de OpenAI, Hugging Face y Ollama.
+   - Guías de integración API REST con PHP.
+   - Buenas prácticas de generación de documentos automatizados.
+
+   ## e. **Visión General**
+   El proyecto busca convertirse en una herramienta de ayuda para estudiantes, desarrolladores y profesionales, facilitando la creación de documentos formales mediante una plataforma inteligente, modular y escalable. La visión a largo plazo es integrar más formatos, personalizar plantillas y ofrecer servicios de análisis documental avanzado.
+   

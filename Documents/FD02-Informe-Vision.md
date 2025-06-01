@@ -218,3 +218,26 @@
    
    Con una visión a futuro centrada en la expansión funcional y la mejora continua, este proyecto sienta las bases para una nueva forma de gestionar documentación técnica, institucional y administrativa, posicionándose como un recurso clave en el ecosistema digital actual.
    
+   # 11. Recomendaciones
+   Para garantizar el éxito y sostenibilidad del proyecto “Generador de Documentación Impulsado por IA (GDI-IA)”, se recomienda tener en cuenta los siguientes aspectos:
+   1. **Monitoreo constante de los servicios de IA externos**
+   Dado que el sistema depende de APIs externas como OpenAI u Ollama, es fundamental mantener una vigilancia continua sobre su disponibilidad, cambios en políticas, tarifas o funcionalidades.
+   2. **Políticas claras de uso y protección de datos**
+   Implementar medidas de seguridad robustas y cumplir con normativas de protección de datos (como la Ley de Protección de Datos Personales) para generar confianza en los usuarios y proteger la información procesada.
+   3. **Capacitación a los usuarios finales**
+   Asegurar que los usuarios comprendan el funcionamiento del sistema y sus alcances mediante tutoriales, documentación y asistencia técnica, especialmente en las etapas iniciales de uso.
+   4. **Mantenimiento periódico y mejoras continuas**
+   Establecer un plan de mantenimiento técnico regular, que incluya la revisión del rendimiento, actualización de librerías y mejoras en la experiencia de usuario.
+   5. **Estrategia escalable de infraestructura**
+   Diseñar la arquitectura del sistema considerando posibles aumentos en la demanda, incorporando servicios de nube escalables para almacenamiento y procesamiento.
+   6. **Pruebas exhaustivas antes del despliegue**
+   Realizar pruebas funcionales, de carga y de seguridad para asegurar que el sistema funcione correctamente bajo distintos escenarios y volúmenes de uso.
+   7. **Modelo de negocio sostenible**
+   Evaluar periódicamente la rentabilidad del sistema y ajustar los planes de precios o características según la retroalimentación del mercado y las necesidades de los usuarios.
+   8. **Retroalimentación continua de usuarios**
+   Establecer mecanismos de contacto directo con los usuarios para recibir sugerencias, identificar fallos o necesidades no cubiertas, y guiar el desarrollo futuro de la plataforma.
+   
+   # 12. Webgrafía
+   - Informe Final del Proyecto GDI-IA (2025). Sistema Generador de documentación impulsado por IA (GDI-IA). DevStar Solutions.
+   - Documento SRS del Proyecto GDI-IA (2025). Sistema Generador de documentación impulsado por IA (GDI-IA). DevStar Solutions.
+   - Informe de Factibilidad Proyecto GDI-IA (2025). Sistema Generador de documentación impulsado por IA (GDI-IA). DevStar Solutions.

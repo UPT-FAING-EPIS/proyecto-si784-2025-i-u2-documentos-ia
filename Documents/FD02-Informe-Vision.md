@@ -177,3 +177,14 @@
    El sistema se distribuirá bajo un modelo SaaS (Software as a Service), alojado en la nube. No requiere instalación local por parte del usuario.
    Los términos de licencia dependerán del perfil del cliente: usuario individual, empresa o institución educativa.
    
+   # 5. Características del producto
+   - **Conexión de API’s con servicios de IA:** Se integrarán modelos de lenguaje mediante APIs externas.
+   - **Integración con múltiples IAs:** Soporte para diferentes motores de IA según los requerimientos del usuario o el tipo de documento.
+   - **Generación conforme a formatos preestablecidos:** Cumplimiento de estructuras estándar de documentos como informes, oficios, propuestas, etc.
+   - **Seguridad en el manejo de datos:** Protección de la información mediante cifrado y autenticación por roles.
+   
+   # 6. Restricciones
+   - Dependencia de proveedores de servicios de IA para el procesamiento del lenguaje natural.
+   - Limitación en la generación de documentos bajo el plan gratuito.
+   - Uso restringido según políticas de uso responsable y límites mensuales.
+   

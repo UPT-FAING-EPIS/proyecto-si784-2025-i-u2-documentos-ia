@@ -198,3 +198,23 @@
    - La integración con APIs será desarrollada en paralelo con énfasis en la escalabilidad.
    - Funcionalidades como el historial y las descargas se implementarán en fases posteriores.
    
+   # 9. Otros requerimientos del producto
+   ## a. **Estándares legales**
+   Cumplimiento de normativas de protección de datos personales como la GDPR o la Ley de Protección de Datos local.
+   
+   ## b. **Estándares de comunicación**
+   Uso de canales seguros (HTTPS), y encriptación de datos sensibles.
+   
+   ## c. **Estándares de cumplimiento de la plataforma**
+   Soporte para navegadores modernos, accesibilidad (WCAG) y adaptabilidad a diferentes resoluciones.
+   
+   ## d. **Estándares de calidad y seguridad**
+   Pruebas de integración, pruebas de carga y validaciones de seguridad periódicas.
+   
+   # 10. Conclusiones
+   El proyecto “Generador de Documentación Impulsado por IA (GDI-IA)” representa una solución innovadora y práctica para enfrentar los desafíos asociados con la creación de documentos estructurados. A través de una plataforma web modular, escalable y basada en inteligencia artificial, se busca reducir el tiempo y esfuerzo invertido por los usuarios en la elaboración de documentos, garantizando al mismo tiempo coherencia, precisión y cumplimiento de formatos predefinidos.
+   
+   Gracias a su enfoque automatizado, el sistema no solo agiliza procesos repetitivos, sino que también eleva la calidad del contenido generado. La integración de múltiples servicios de IA, junto con una interfaz intuitiva y capacidades de almacenamiento y exportación, convierten a GDI-IA en una herramienta esencial tanto en entornos académicos como profesionales.
+   
+   Con una visión a futuro centrada en la expansión funcional y la mejora continua, este proyecto sienta las bases para una nueva forma de gestionar documentación técnica, institucional y administrativa, posicionándose como un recurso clave en el ecosistema digital actual.
+   

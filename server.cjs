@@ -11,13 +11,18 @@ console.log('🚀 Iniciando servidor DocuGen...');
 console.log('📁 Variables de entorno cargadas');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000; // Heroku asigna el puerto automáticamente
 
 // Middleware de logging
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
   next();
 });
+
+// Configuración para producción en Heroku
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1); // Confiar en el proxy de Heroku
+}
 
 // Middleware básico
 app.use(express.static('public'));
@@ -31,7 +36,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: { 
-    secure: false, 
+    secure: process.env.NODE_ENV === 'production', // HTTPS en producción
     maxAge: 24 * 60 * 60 * 1000, // 24 horas
     httpOnly: true
   }
@@ -81,7 +86,8 @@ app.get('/health', (req, res) => {
   res.status(200).json({ 
     status: 'OK', 
     timestamp: new Date().toISOString(),
-    service: 'DocuGen API'
+    service: 'DocuGen API',
+    environment: process.env.NODE_ENV || 'development'
   });
 });
 
@@ -100,10 +106,11 @@ app.use((error, req, res, next) => {
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log('🌟 ================================');
-  console.log(`🚀 Servidor DocuGen corriendo en http://localhost:${PORT}`);
-  console.log('🔐 Página de login: http://localhost:${PORT}/login');
-  console.log('🏠 Página principal: http://localhost:${PORT}');
+  console.log(`🚀 Servidor DocuGen corriendo en puerto ${PORT}`);
+  console.log(`🔐 Página de login: /login`);
+  console.log('🏠 Página principal: /');
   console.log('💾 Base de datos: Supabase');
+  console.log(`🌍 Entorno: ${process.env.NODE_ENV || 'development'}`);
   console.log('🌟 ================================');
 });
 

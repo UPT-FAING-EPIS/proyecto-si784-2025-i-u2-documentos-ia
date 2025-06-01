@@ -2,17 +2,23 @@
   "name": "calidadproyecto",
   "version": "1.0.0",
   "main": "server.cjs",
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.cjs",
-    "dev": "node server.cjs"
+    "dev": "node server.cjs",
+    "build": "echo 'Build complete'",
+    "heroku-postbuild": "echo 'Post build complete'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Generador de documentación impulsado por IA",
   "dependencies": {
-    "@google/genai": "^1.3.0",
+    "@google/generative-ai": "^0.19.0",
     "@supabase/supabase-js": "^2.49.8",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.5",

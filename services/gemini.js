@@ -1,4 +1,4 @@
-const { GoogleGenAI } = require('@google/genai');
+const { GoogleGenerativeAI } = require('@google/generative-ai'); // Corrección aquí
 
 class GeminiService {
     constructor() {
@@ -11,7 +11,8 @@ class GeminiService {
         ].filter(key => key); // Filtrar keys que no estén definidas
         
         this.currentKeyIndex = 0;
-        this.ai = null;
+        this.genAI = null;
+        this.model = null;
         
         if (this.apiKeys.length > 0) {
             this.initializeAPI();
@@ -26,9 +27,8 @@ class GeminiService {
         }
         
         try {
-            this.ai = new GoogleGenAI({ 
-                apiKey: this.apiKeys[this.currentKeyIndex] 
-            });
+            this.genAI = new GoogleGenerativeAI(this.apiKeys[this.currentKeyIndex]);
+            this.model = this.genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
             console.log(`✅ Gemini inicializado con API key ${this.currentKeyIndex + 1}`);
         } catch (error) {
             console.error('❌ Error al inicializar Gemini:', error);
@@ -48,7 +48,7 @@ class GeminiService {
     
     // Analizar código fuente
     async analizarCodigo(contenidoCodigo, nombreArchivo, lenguajeProgramacion = 'auto') {
-        if (!this.ai) {
+        if (!this.model) {
             throw new Error('Gemini no está inicializado correctamente');
         }
         
@@ -61,12 +61,9 @@ class GeminiService {
             try {
                 console.log(`🔍 Analizando código con Gemini (intento ${intentos + 1}/${maxIntentos})`);
                 
-                const response = await this.ai.models.generateContent({
-                    model: "gemini-2.0-flash",
-                    contents: prompt,
-                });
-                
-                const analisis = response.text;
+                const result = await this.model.generateContent(prompt);
+                const response = await result.response;
+                const analisis = response.text();
                 
                 console.log('✅ Análisis completado exitosamente');
                 return {
@@ -83,7 +80,6 @@ class GeminiService {
                 if (error.message.includes('quota') || 
                     error.message.includes('limit') || 
                     error.message.includes('403') ||
-                    error.message.includes('429') ||
                     error.status === 429) {
                     console.log('🔄 Cambiando a siguiente API key...');
                     if (!this.switchToNextKey()) {
@@ -199,92 +195,6 @@ Proporciona el análisis en español, de manera clara y estructurada.
             lineas_comentarios: comentarios.length,
             caracteres: codigo.length,
             palabras: codigo.split(/\s+/).filter(word => word.length > 0).length
-        };
-    }
-    
-    // Generar documentación SRS
-    async generarDocumentacionSRS(analisisProyecto) {
-        if (!this.ai) {
-            throw new Error('Gemini no está inicializado correctamente');
-        }
-        
-        const prompt = `
-Como experto en ingeniería de software, genera un documento SRS (Software Requirements Specification) completo basado en el siguiente análisis de código:
-
-${analisisProyecto}
-
-El documento SRS debe incluir:
-
-1. **Introducción**
-   - Propósito del documento
-   - Alcance del producto
-   - Definiciones y acrónimos
-
-2. **Descripción General**
-   - Perspectiva del producto
-   - Funciones del producto
-   - Características de los usuarios
-   - Restricciones
-
-3. **Requisitos Específicos**
-   - Requisitos funcionales (RF-001, RF-002, etc.)
-   - Requisitos no funcionales (RNF-001, RNF-002, etc.)
-   - Requisitos de interfaz
-
-4. **Apéndices**
-   - Glosario
-   - Referencias
-
-Genera el documento en formato markdown, bien estructurado y profesional.
-        `;
-        
-        return await this.procesarConGemini(prompt);
-    }
-    
-    // Método auxiliar para procesar prompts con Gemini
-    async procesarConGemini(prompt) {
-        if (!this.ai) {
-            throw new Error('Gemini no está inicializado correctamente');
-        }
-        
-        let intentos = 0;
-        const maxIntentos = this.apiKeys.length;
-        
-        while (intentos < maxIntentos) {
-            try {
-                const response = await this.ai.models.generateContent({
-                    model: "gemini-2.0-flash",
-                    contents: prompt,
-                });
-                
-                return {
-                    success: true,
-                    contenido: response.text,
-                    api_key_usada: this.currentKeyIndex + 1
-                };
-                
-            } catch (error) {
-                console.error(`❌ Error con API key ${this.currentKeyIndex + 1}:`, error.message);
-                
-                if (error.message.includes('quota') || 
-                    error.message.includes('limit') ||
-                    error.message.includes('429') ||
-                    error.status === 429) {
-                    if (!this.switchToNextKey()) {
-                        break;
-                    }
-                } else {
-                    throw error;
-                }
-                
-                intentos++;
-            }
-        }
-        
-        return {
-            success: false,
-            error: 'Error al procesar con Gemini',
-            contenido: null
         };
     }
 }

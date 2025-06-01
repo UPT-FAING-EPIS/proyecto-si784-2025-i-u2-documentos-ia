@@ -148,3 +148,32 @@
    - Control de versiones y almacenamiento en línea.
    - Compatibilidad con diferentes tipos de documentos (PDF, DOCX).
 
+   # 4. Vista General del Producto
+   ## a. **Perspectiva del producto**
+   El sistema GDI-IA será una plataforma web accesible desde cualquier navegador, desarrollada en PHP con arquitectura modular para facilitar la integración con APIs de Inteligencia Artificial. Utilizará una base de datos MySQL para la gestión eficiente y segura de la información, permitiendo una experiencia dinámica y escalable.
+   
+   ## b. **Resumen de capacidades**
+   - Captura guiada de datos para facilitar la recolección de información del usuario.
+   - Generación automática de documentos con base en entradas y plantillas predeterminadas.
+   - Historial de documentos accesible para consultas o nuevas versiones.
+   - Opciones de descarga en múltiples formatos (PDF, DOCX, etc.).
+   
+   ## c. **Suposiciones y dependencias**
+   - Disponibilidad constante y estable de los servicios externos de IA (como OpenAI).
+   - Acceso a internet por parte de los usuarios finales.
+   - Aceptación y cumplimiento de términos de uso de las APIs integradas.
+   
+   ## d. **Costos y precios**
+   El proyecto considera como costos principales:
+   - Desarrollo e implementación inicial.
+   - Consumo de APIs de IA de terceros.
+   - Mantenimiento de servidores y bases de datos.
+   
+   Se ofrecerá un modelo freemium:
+   - Plan gratuito con funcionalidades limitadas (documentos mensuales, opciones de formato básicas).
+   - Planes premium escalonados según volumen de uso, tipos de documento y acceso a configuraciones avanzadas.
+   
+   ## e. **Licenciamiento e instalación**
+   El sistema se distribuirá bajo un modelo SaaS (Software as a Service), alojado en la nube. No requiere instalación local por parte del usuario.
+   Los términos de licencia dependerán del perfil del cliente: usuario individual, empresa o institución educativa.
+   

@@ -108,3 +108,12 @@
    ## e. **Visión General**
    El proyecto busca convertirse en una herramienta de ayuda para estudiantes, desarrolladores y profesionales, facilitando la creación de documentos formales mediante una plataforma inteligente, modular y escalable. La visión a largo plazo es integrar más formatos, personalizar plantillas y ofrecer servicios de análisis documental avanzado.
    
+   # 2. Posicionamiento
+   El sistema GDI-IA se posiciona como una solución innovadora dentro del mercado de automatización documental, enfocándose específicamente en la generación inteligente de documentos técnicos y académicos. Su ventaja competitiva radica en la integración modular de múltiples servicios de inteligencia artificial, lo que le permite adaptarse a distintos formatos y estándares establecidos, superando las limitaciones de herramientas convencionales.
+   
+   ## a. **Oportunidad de negocio**
+   Actualmente, existe una notoria falta de plataformas accesibles que automaticen de forma eficiente la creación de documentos personalizados y estructurados. Esta carencia representa una oportunidad para ofrecer un servicio escalable y flexible dirigido a estudiantes, profesionales independientes, equipos de desarrollo y organizaciones que requieren generar documentación formal de forma frecuente y estandarizada. GDI-IA puede ser adoptado por instituciones educativas, agencias tecnológicas y freelancers que deseen optimizar su flujo de trabajo documental.
+   
+   ## b. **Definición del problema**
+   La elaboración manual de documentos formales es un proceso que consume tiempo, requiere alta atención al detalle y es susceptible a errores de formato, redacción y organización del contenido. No existe actualmente una herramienta que permita, de manera integrada, aprovechar las capacidades de diferentes IAs para automatizar este proceso bajo una misma plataforma, generando así una solución flexible, precisa y adaptable a distintas necesidades documentales.
+   

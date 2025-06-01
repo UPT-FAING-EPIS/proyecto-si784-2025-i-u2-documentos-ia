@@ -188,3 +188,13 @@
    - Limitación en la generación de documentos bajo el plan gratuito.
    - Uso restringido según políticas de uso responsable y límites mensuales.
    
+   # 7. Rangos de calidad
+   - **Disponibilidad del sistema:** 99% de uptime mensual mínimo garantizado.
+   - **Precisión en la generación:** Alta coherencia estructural y gramatical en los documentos generados.
+   - **Interfaz de usuario:** Interfaz intuitiva, responsiva, accesible desde dispositivos móviles y de escritorio.
+   
+   # 8. Precedencia y Prioridad
+   - Prioridad alta en el desarrollo de módulos de captura de datos y generación de documentos.
+   - La integración con APIs será desarrollada en paralelo con énfasis en la escalabilidad.
+   - Funcionalidades como el historial y las descargas se implementarán en fases posteriores.
+   

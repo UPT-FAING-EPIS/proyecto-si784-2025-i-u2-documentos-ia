@@ -117,3 +117,34 @@
    ## b. **Definición del problema**
    La elaboración manual de documentos formales es un proceso que consume tiempo, requiere alta atención al detalle y es susceptible a errores de formato, redacción y organización del contenido. No existe actualmente una herramienta que permita, de manera integrada, aprovechar las capacidades de diferentes IAs para automatizar este proceso bajo una misma plataforma, generando así una solución flexible, precisa y adaptable a distintas necesidades documentales.
    
+   # 3. Descripción de los interesados y usuarios
+   ## a. **Resumen de los interesados**
+   Los interesados en el proyecto incluyen directivos de empresas tecnológicas, responsables de áreas académicas, gestores de proyectos, y entidades educativas que buscan optimizar la producción documental. También se consideran partes interesadas los desarrolladores encargados del mantenimiento del sistema y los inversores potenciales.
+   
+   ## b. **Resumen de los usuarios**
+   Los usuarios principales del sistema serán estudiantes universitarios, desarrolladores de software, asistentes de investigación, y profesionales que requieren elaborar documentación técnica o académica siguiendo formatos establecidos. Estos usuarios valoran la rapidez, precisión, facilidad de uso y confiabilidad del sistema.
+   
+   ## c. **Entorno de usuario**
+   El entorno de usuario será una plataforma web accesible desde navegadores modernos, compatible con dispositivos de escritorio y móviles. Requiere conexión a internet y acceso a una cuenta para interactuar con los módulos de generación, edición, descarga y almacenamiento de documentos.
+   
+   ## d. **Perfiles de los interesados**
+   - **Directores de TI**: Interesados en soluciones que mejoren la eficiencia operativa de sus equipos.
+   - **Coordinadores académicos**: Buscan herramientas para estandarizar y facilitar la generación de documentos institucionales.
+   - **Desarrolladores del sistema**: Interesados en el rendimiento, escalabilidad y mantenimiento de la solución.
+   - **Inversionistas o patrocinadores**: Evaluarán el retorno de inversión y la viabilidad comercial del producto.
+   
+   ## e. **Perfiles de los Usuarios**
+   - **Trabajadores de empresas de desarrollo de software:** Necesitan agilizar la producción de documentación del producto software para sus clientes.
+   - **Desarrolladores freelance**: Necesitan agilizar la producción de documentación para proyectos.
+   - **Asistentes de investigación**: Demandan una herramienta que les permita enfocarse en el contenido, dejando el formato y redacción a la IA.
+   - **Profesionales técnicos**: Buscan soluciones eficientes para entregar informes formales sin distracciones operativas.
+   
+   ## f. **Necesidades de los interesados y usuarios**
+   - Generación rápida de documentos estructurados.
+   - Reducción de errores en formato, estilo y ortografía.
+   - Acceso a plantillas normalizadas y automatización de referencias.
+   - Interfaz intuitiva y adaptable.
+   - Módulos de IA confiables para redacción y análisis.
+   - Control de versiones y almacenamiento en línea.
+   - Compatibilidad con diferentes tipos de documentos (PDF, DOCX).
+

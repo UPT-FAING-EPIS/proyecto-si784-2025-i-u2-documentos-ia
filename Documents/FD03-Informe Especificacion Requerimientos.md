@@ -32,6 +32,17 @@
 |1.0|AHAO, CDAR, WESJ, BEAS|PCQ|-|01/06/2025|Versión 1.0|
 |2.0|AHAO, CDAR, WESJ, BEAS|PCQ|-|01/06/2025|Versión 2.0|
 
+## Índice General
+
+1. [Introducción](#introducción)
+2. [Generalidades de la Empresa](#generalidades-de-la-empresa)
+3. [Visionamiento de la Empresa](#visionamiento-de-la-empresa)
+4. [Análisis de Procesos](#análisis-de-procesos)
+5. [Especificación de Requerimientos de Software](#especificación-de-requerimientos-de-software)
+6. [Fase de Desarrollo](#fase-de-desarrollo)
+7. [Conclusiones](#conclusiones)
+8. [Recomendaciones](#recomendaciones)
+
 ---
 
 ## Introducción
@@ -41,7 +52,7 @@ El objetivo principal es diseñar e implementar una plataforma web inteligente q
 
 ---
 
-## I. Generalidades de la Empresa
+## Generalidades de la Empresa
 
 ### 1. Nombre de la Empresa
 **DevStar Solutions**
@@ -55,7 +66,7 @@ Ofrecer productos y servicios de software que integren tecnologías emergentes, 
 ### 4. Organigrama
 ![Logo](media/organigrama.png)
 
-## II. Visionamiento de la Empresa
+## Visionamiento de la Empresa
 
 ### 1. Descripción del Problema
 Actualmente, muchas organizaciones y profesionales pierden tiempo valioso en la elaboración manual de documentos formales. Esta falta de automatización genera costos innecesarios, retrasa la entrega de proyectos y afecta la eficiencia operativa. DevStar Solutions identificó la necesidad de una plataforma que permita automatizar la generación de documentos estructurados utilizando IA, optimizando tiempos y asegurando calidad.
@@ -93,12 +104,12 @@ El análisis realizado (técnico, operativo, legal y financiero) demuestra que e
 - Necesidad de reducir tiempos de entrega de documentos formales.
 - Limitada oferta de plataformas con integración modular de IA.
 
-## III. Análisis de Procesos
+## Análisis de Procesos
 
 ### a) Diagrama de actividades
 ![Logo](media/diagrama-actividades.png)
 
-## IV. Especificación de Requerimientos de Software
+## Especificación de Requerimientos de Software
 
 ### a) Cuadro de Requerimientos funcionales Inicial
 | REQ | Requerimiento                                                                                     |
@@ -166,7 +177,7 @@ El análisis realizado (técnico, operativo, legal y financiero) demuestra que e
 - **RN-06: Roles y Permisos**  
   Administradores acceden a estadísticas de uso, feedback y ajustes de IA.
 
-## V. Fase de Desarrollo
+## Fase de Desarrollo
 
 ### A. Perfiles de Usuario
 
@@ -202,7 +213,7 @@ El análisis realizado (técnico, operativo, legal y financiero) demuestra que e
 #### Diagrama de Casos de Uso
 ![Logo](media/diagrama-casosuso.png)
 
-## VI. Modelo Lógico
+## Modelo Lógico
 #### Analisis de Objetos
 ![Logo](media/diagrama-analisisobjeto.png)
 
@@ -214,3 +225,16 @@ El análisis realizado (técnico, operativo, legal y financiero) demuestra que e
 
 #### Diagrama de Clases
 ![Logo](media/diagrama-clases.png)
+
+## Conclusiones
+
+El proyecto **GDI-IA** propone una solución innovadora para automatizar la creación de documentos técnicos y académicos, respondiendo a necesidades de eficiencia, estandarización y calidad.  
+La especificación de requerimientos presentada define las funcionalidades esenciales, necesidades de usuarios y estándares de calidad para guiar el desarrollo y mantenimiento del sistema.  
+Su correcta implementación garantizará valor organizacional, mayor productividad y reducción de errores.
+
+## Recomendaciones
+
+- Asegurar infraestructura robusta y segura para disponibilidad y rendimiento.
+- Implementar procedimientos de actualización y verificación de APIs de IA.
+- Refuerzo de medidas de seguridad para la protección de datos y acceso por roles.
+- Planificar escalabilidad del sistema desde versiones iniciales.

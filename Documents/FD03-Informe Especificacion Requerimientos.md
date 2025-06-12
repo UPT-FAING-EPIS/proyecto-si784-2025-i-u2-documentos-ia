@@ -168,14 +168,14 @@ El análisis realizado (técnico, operativo, legal y financiero) demuestra que e
 
 ## V. Fase de Desarrollo
 
-### 1. Perfiles de Usuario
+### A. Perfiles de Usuario
 
 - **Usuario General:**  
   Utiliza la herramienta para generar documentación guiada o por IA.
 - **Administrador:**  
   Supervisa el uso, evalúa feedback, ajusta configuraciones y actualiza plantillas o modelos IA.
 
-### 2. Historias de Usuario Principales
+### Historias de Usuario Principales
 
 | HU   | Nombre                        | Descripción                                                                                      |
 |------|-------------------------------|--------------------------------------------------------------------------------------------------|
@@ -194,3 +194,23 @@ El análisis realizado (técnico, operativo, legal y financiero) demuestra que e
 | HU13 | Especificar Idioma            | Elegir idioma de la documentación                                                                |
 | HU14 | Feedback del Usuario          | Proveer feedback sobre la calidad de la documentación                                            |
 | HU15 | Ayuda y Soporte               | Acceso a ayuda y soporte                                                                         |
+
+### B. Modelo Conceptual
+#### Diagrama de Paquetes
+![Logo](media/diagrama-paquetes.png)
+
+#### Diagrama de Casos de Uso
+![Logo](media/diagrama-casosuso.png)
+
+## VI. Modelo Lógico
+#### Analisis de Objetos
+![Logo](media/diagrama-analisisobjeto.png)
+
+#### Analisis de Actividades con Objetos
+![Logo](media/diagrama-actividadesobjeto.png)
+
+#### Analisis de Secuencia
+![Logo](media/diagrama-secuencia.png)
+
+#### Diagrama de Clases
+![Logo](media/diagrama-clases.png)
